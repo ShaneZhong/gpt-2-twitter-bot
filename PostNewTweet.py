@@ -1,9 +1,10 @@
 import tweepy
 import os
 import pandas as pd
+import sys
 
 # User Input:
-csv_dir = "./sample/test_output_tweet.csv"
+csv_dir = "./sample/test_output_tweet1.csv"
 
 # Fetch environment variable
 try:
@@ -23,6 +24,7 @@ try:
 except:
   print("ERROR: No environment variables found.")
   print("Please add consumer_key, consumer_secret,access_token and access_token_secret.")
+  sys.exit(1)
 
 
 # Code to access the account
@@ -35,6 +37,7 @@ try:
     print("This is my user name: "+user.name)
 except:
     print("ERROR: Twitter API call failed. Please check your twitter API Access code.")
+    sys.exit(1)
 
 # Select the first line from the output_tweet.csv file
 try:
@@ -44,6 +47,7 @@ try:
     print(selected_tweet)
 except:
     print(f"ERROR: No csv file found or the file does not contain any tweet! The current dir is: {csv_dir}")
+    sys.exit(1)
 
 # post the tweet
 try:
@@ -51,6 +55,7 @@ try:
     print("New Tweet Posted Successfully!")
 except:
     print("ERROR: Failed to post tweet.")
+    sys.exit(1)
 
 try:
     # exclude the first row 0 from the data frame
@@ -60,3 +65,4 @@ try:
     print("CSV file updated.")
 except:
     print(f"ERROR: Failed to update the csv file. The current dir is: {csv_dir}")
+    sys.exit(1)
