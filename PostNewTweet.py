@@ -60,7 +60,6 @@ except:
 try:
     # exclude the first row 0 from the data frame
     df = df_raw[1:].copy()
-    df
     df.to_csv(csv_dir, index=False, header=True)
     print("CSV file updated.")
 except:
