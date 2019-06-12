@@ -4,7 +4,7 @@ import pandas as pd
 import sys
 
 # User Input:
-csv_dir = "./sample/test_output_tweet1.csv"
+csv_dir = "./sample/test_output_tweet.csv"
 
 # Fetch environment variable
 try:
