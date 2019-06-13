@@ -3,8 +3,10 @@ import os
 import pandas as pd
 import sys
 
+# IMPORTANT: In cron tab, run this in the parent directory. E.g. /get-2-twitter-bot
+
 # User Input:
-csv_dir = "./sample/test_output_tweet.csv"
+csv_dir = "./sample/output_tweet.csv"
 
 # Fetch environment variable
 try:
