@@ -39,7 +39,7 @@ except:
 
 # related functions
 # delete friends once reach the threshold
-def remove_frd_from_existing_list(api=tweepy.API(auth), max_frd_num=4000, del_frd_num=30):
+def remove_frd_from_existing_list(api=tweepy.API(auth), max_frd_num=4500, del_frd_num=100):
     try:
         frd_list = api.friends_ids(id=api.me().id)
         frd_list = set(frd_list)
