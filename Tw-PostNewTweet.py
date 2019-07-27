@@ -47,8 +47,8 @@ except tweepy.TweepError as e:
     error_code = str(e.args[0][0]['code'])
     error_msg = str(e.args[0][0]['message'])
     print("TweepError: " + error_code + " - " + error_msg)
-
     send_error_msg_via_email(error_msg=error_msg, password=email_password)
+    sys.exit(1)
 except:
     print("ERROR: Twitter API call failed. Please check your twitter API Access code.")
     send_error_msg_via_email(error_msg="Twitter API call failed.", password=email_password)
