@@ -16,7 +16,7 @@ try:
     consumer_secret = os.environ['consumer_secret']
     access_token = os.environ['access_token']
     access_token_secret = os.environ['access_token_secret']
-    email_password = os.environ['email_password'] # email password
+    email_password = os.environ['email_password']  # email password
 
     print(f'Current working directory: {os.getcwd()}')
     print("=" * 30)
@@ -27,12 +27,6 @@ try:
     print(access_token_secret[:5])
     print("=" * 30)
 
-except tweepy.TweepError as e:
-    error_code = str(e.args[0][0]['code'])
-    error_msg = str(e.args[0][0]['message'])
-    print("TweepError: " + error_code + " - " + error_msg)
-
-    send_error_msg_via_email(error_msg=error_msg, password=email_password)
 except:
     print("ERROR: No environment variables found.")
     print("Please add consumer_key, consumer_secret,access_token and access_token_secret.")
@@ -66,12 +60,6 @@ try:
 
     selected_tweet = df_raw.output_tweet[0]
     print(selected_tweet)
-except tweepy.TweepError as e:
-    error_code = str(e.args[0][0]['code'])
-    error_msg = str(e.args[0][0]['message'])
-    print("TweepError: " + error_code + " - " + error_msg)
-
-    send_error_msg_via_email(error_msg=error_msg, password=email_password)
 except:
     print(f"ERROR: No csv file found or the file does not contain any tweet! The current dir is: {csv_dir}")
     send_error_msg_via_email(error_msg="No Output CSV files found", password=email_password)
@@ -86,10 +74,7 @@ except tweepy.TweepError as e:
     error_msg = str(e.args[0][0]['message'])
     print("TweepError: " + error_code + " - " + error_msg)
 
-    send_error_msg_via_email(error_msg=error_code, password=email_password)
-except:
-    print("ERROR: Failed to post tweet.")
-    send_error_msg_via_email(error_msg="Failed to post tweet", password=email_password)
+    send_error_msg_via_email(error_msg=error_msg, password=email_password)
     sys.exit(1)
 
 try:
