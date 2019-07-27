@@ -19,6 +19,10 @@ try:
     print(access_token[:5])
     print(access_token_secret[:5])
     print("=" * 30)
+except tweepy.TweepError as e:
+    error_code = str(e.args[0][0]['code'])
+    error_msg = str(e.args[0][0]['message'])
+    print("TweepError: " + error_code + " - " + error_msg)
 except:
     print("ERROR: No environment variables found.")
     print("Please add consumer_key, consumer_secret,access_token and access_token_secret.")
@@ -32,6 +36,10 @@ try:
 
     user = api.me()
     print("This is my user name: "+user.name)
+except tweepy.TweepError as e:
+    error_code = str(e.args[0][0]['code'])
+    error_msg = str(e.args[0][0]['message'])
+    print("TweepError: " + error_code + " - " + error_msg)
 except:
     print("ERROR: Twitter API call failed. Please check your twitter API Access code.")
     sys.exit(1)
@@ -51,11 +59,15 @@ def remove_frd_from_existing_list(api=tweepy.API(auth), max_frd_num=4500, del_fr
             # randomly remove N users from the list:
             del_frd_list = random.sample(frd_list, del_frd_num)
             for del_user_id in del_frd_list:
-                print(f'remove frd: {del_user_id}')
+                # print(f'remove frd: {del_user_id}')
                 api.destroy_friendship(user_id=del_user_id)
         else:
             print("The current frd list is below the number threadhold.")
 
+    except tweepy.TweepError as e:
+        error_code = str(e.args[0][0]['code'])
+        error_msg = str(e.args[0][0]['message'])
+        print("TweepError: " + error_code + " - " + error_msg)
     except:
         print("ERROR: Check remove_frd_from_existing_list")
 
@@ -98,6 +110,10 @@ def add_new_frds(new_user_list):
             print(user_id)
             api.create_friendship(user_id=user_id)
             new_frd_list.append(user_id)
+        except tweepy.TweepError as e:
+            error_code = str(e.args[0][0]['code'])
+            error_msg = str(e.args[0][0]['message'])
+            print("TweepError: " + error_code + " - " + error_msg)
         except:
             print("ERROR: Max new friends exceed.")
             break
@@ -152,9 +168,9 @@ search_words_list = ["#NLP",
                     "#DeepLearning",
                     "#DL",
                     "#Marketing",
-                    "GPU", "smart", "machine", "future", "technology",
-                    "data", "science", "marketing", "fun", "innovation",
-                    "like", "fun", "crazy", "believe", "human", "great"]
+                    "GPU", "smart", "machine", "future", "technology", "amazing", "positive",
+                    "data", "science", "marketing", "fun", "innovation", "happy", "awesome",
+                    "like", "fun", "crazy", "believe", "human", "great", "follow"]
 
 search_words = random.choice(search_words_list)
 
