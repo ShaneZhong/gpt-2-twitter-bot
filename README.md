@@ -1,6 +1,7 @@
 # AI Generated tweet using gpt-2 model
 The twitter account link [here](https://twitter.com/ai_telling)
 
+To set up the email notification - please visit [here](https://support.google.com/mail/answer/7126229?visit_id=636997950280030700-282303594&rd=2#cantsignin)
 # gpt-2
 
 Code from the paper ["Language Models are Unsupervised Multitask Learners"](https://d4mucfpksywv.cloudfront.net/better-language-models/language-models.pdf).
