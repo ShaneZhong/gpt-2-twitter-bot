@@ -23,6 +23,7 @@ except tweepy.TweepError as e:
     error_code = str(e.args[0][0]['code'])
     error_msg = str(e.args[0][0]['message'])
     print("TweepError: " + error_code + " - " + error_msg)
+    sys.exit(1)
 except:
     print("ERROR: No environment variables found.")
     print("Please add consumer_key, consumer_secret,access_token and access_token_secret.")
@@ -40,6 +41,7 @@ except tweepy.TweepError as e:
     error_code = str(e.args[0][0]['code'])
     error_msg = str(e.args[0][0]['message'])
     print("TweepError: " + error_code + " - " + error_msg)
+    sys.exit(1)
 except:
     print("ERROR: Twitter API call failed. Please check your twitter API Access code.")
     sys.exit(1)
@@ -68,8 +70,10 @@ def remove_frd_from_existing_list(api=tweepy.API(auth), max_frd_num=4500, del_fr
         error_code = str(e.args[0][0]['code'])
         error_msg = str(e.args[0][0]['message'])
         print("TweepError: " + error_code + " - " + error_msg)
+        sys.exit(1)
     except:
         print("ERROR: Check remove_frd_from_existing_list")
+        sys.exit(1)
 
     return
 
@@ -114,6 +118,7 @@ def add_new_frds(new_user_list):
             error_code = str(e.args[0][0]['code'])
             error_msg = str(e.args[0][0]['message'])
             print("TweepError: " + error_code + " - " + error_msg)
+            break
         except:
             print("ERROR: Max new friends exceed.")
             break
